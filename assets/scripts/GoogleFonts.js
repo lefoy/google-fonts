@@ -9,38 +9,80 @@ window.googlefonts = window.googlefonts || {};
         var apiKey = "AIzaSyCVaukYgO4yQkwxcUNAMu6-L2-EhyszPsA",
             dropdown = $('#fonts'),
             preview = $('#preview'),
+            currentFont,
             fonts;
 
+        function _updateHash() {
+
+            window.location.hash = currentFont.replace(/\s/g, '');
+
+        }
+
+        function _loadHash() {
+
+            var hash = window.location.hash.substring(1),
+                fontIndex;
+
+            $.each(fonts, function(index, item) {
+                if (item.family.replace(/\s/g, '') === hash) {
+                    currentFont = item.family;
+                    fontIndex = index;
+                    return false;
+                }
+            });
+
+            dropdown.find('option').eq(fontIndex).attr('selected', 'selected');
+
+            _updateFont();
+
+        }
+
         function _display() {
-            dropdown.css('visibility', 'visible');
+
+            $('body').addClass('is-loaded');
+
             for (var i = 0, l = fonts.length; i < l; i++) {
                 dropdown.append('<option value="' + fonts[i].family + '">' + fonts[i].family + '</option>');
             }
+
+            _loadHash();
+
         }
 
-        function _updateFont(font) {
+        function _updateFont() {
+
             WebFont.load({
                 google: {
-                    families: [font]
+                    families: [currentFont]
                 }
             });
-            preview.css('font-family', font);
+
+            preview.css('font-family', currentFont);
+
+            _updateHash();
         }
 
         function _setupAPI() {
+
             gapi.client.setApiKey(apiKey);
+
             gapi.client.load('webfonts', 'v1', function() {
+
                 var request = gapi.client.webfonts.webfonts.list();
                 request.execute(function(resp) {
                     fonts = resp.items;
                     _display();
                 });
+
             });
+
         }
 
         function _bindEvents() {
+
             dropdown.on('change', function() {
-                _updateFont($(this).val().toString());
+                currentFont = $(this).val().toString();
+                _updateFont();
             });
         }
 

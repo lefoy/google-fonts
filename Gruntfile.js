@@ -14,9 +14,6 @@ module.exports = function(grunt) {
         }
     });
 
-    // measures the time each task takes
-    require('time-grunt')(grunt);
-
     // load npm tasks
     grunt.loadNpmTasks('grunt-contrib-compass');
 
