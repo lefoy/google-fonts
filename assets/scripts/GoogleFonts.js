@@ -53,7 +53,7 @@ window.googlefonts = window.googlefonts || {};
 
             WebFont.load({
                 google: {
-                    families: [currentFont]
+                    families: [currentFont + ':300,400,700']
                 }
             });
 
