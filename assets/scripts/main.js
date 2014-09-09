@@ -1,15 +1,13 @@
 jQuery(document).ready(function($) {
 
-    $.getJSON("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyDVNqRssIkY835WoykHBq2XVgO1WRb-mLo", function(data) {
-        var items = [];
-        $.each(data, function(key, val) {
-            items.push("<li id='" + key + "'>" + val + "</li>");
+    window.setTimeout(function() {
+        gapi.client.setApiKey("AIzaSyDVNqRssIkY835WoykHBq2XVgO1WRb-mLo");
+        gapi.client.load('webfonts', 'v1', function() {
+            var request = gapi.client.webfonts.webfonts.list();
+            request.execute(function(resp) {
+                console.log(resp);
+            });
         });
-
-        $("<ul/>", {
-            "class": "my-new-list",
-            html: items.join("")
-        }).appendTo("body");
-    });
+    }, 500);
 
 });
