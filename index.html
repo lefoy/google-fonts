@@ -18,10 +18,7 @@
 <body>
     <div class="wrapper">
 
-        <select name="fonts" id="fonts">
-            <option value="roboto">Roboto</option>
-            <option value="source-sans-pro">Source Sans Pro</option>
-        </select>
+        <select name="fonts" id="fonts"></select>
 
         <div id="preview">
             <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, eius?</h1>
@@ -49,10 +46,16 @@
         </div>
     </div>
 
-    <script src="https://apis.google.com/js/client.js?onload=OnLoadCallback"></script>
+    <script>
+    var loadFonts = function() {
+        window.googlefonts.LoadFonts.init();
+    };
+    </script>
+
     <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="assets/scripts/Bookmarks.js"></script>
-    <script type="text/javascript" src="assets/scripts/main.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+    <script type="text/javascript" src="assets/scripts/GoogleFonts.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=loadFonts"></script>
 
 </body>
 
