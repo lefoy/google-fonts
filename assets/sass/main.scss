@@ -1,0 +1,11 @@
+@import "compass";
+
+body {
+    @include background-image(linear-gradient(to right, #ece9e6, #ffffff));
+}
+
+.wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}

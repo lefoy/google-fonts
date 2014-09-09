@@ -1,0 +1,13 @@
+{
+  "name": "frontend-bookmarks",
+  "version": "0.1.0",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-compass": "^1.0.1",
+    "load-grunt-config": "*",
+    "time-grunt": "^1.0.0"
+  },
+  "dependencies": {
+    "time-grunt": "*"
+  }
+}
