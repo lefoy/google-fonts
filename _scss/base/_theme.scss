@@ -1,0 +1,175 @@
+/*=============================
+=            Theme            =
+=============================*/
+
+.single-header {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.logo,
+.project-title a,
+.single-header-navigation a {
+    position: relative;
+    font-size: rem(13px);
+    font-weight: 900;
+    text-decoration: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #fff;
+    &:hover {
+        text-decoration: none;
+    }
+    &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 100%;
+        height: 0;
+        opacity: 0;
+        background-color: #fff;
+        @include transition-property(all);
+        @include transition-duration(150ms);
+    }
+    &:hover:after {
+        height: 4px;
+        opacity: 1;
+    }
+}
+
+.project-header {
+    background: -webkit-linear-gradient(90deg, #3ca55c 10%, #b5ac49 90%);
+    background:    -moz-linear-gradient(90deg, #3ca55c 10%, #b5ac49 90%);
+    background:     -ms-linear-gradient(90deg, #3ca55c 10%, #b5ac49 90%);
+    background:      -o-linear-gradient(90deg, #3ca55c 10%, #b5ac49 90%);
+    background:         linear-gradient(90deg, #3ca55c 10%, #b5ac49 90%);
+}
+
+.project-buttons {
+    margin-top: 60px;
+    text-align: center;
+}
+.project-buttons a {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 20px 30px;
+    font-size: 13px;
+    font-weight: 900;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #555;
+    background-color: #fff;
+    @include border-radius(30px);
+    @include transition-property(all);
+    @include transition-duration(150ms);
+    &:hover {
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+}
+
+.project-title {
+    text-align: center;
+}
+.project-title,
+.project-title a {
+    margin: 0;
+    font-size: rem(60px);
+    font-weight: 100;
+    letter-spacing: normal;
+    text-transform: none;
+    color: #fff;
+}
+
+.project-tagline {
+    margin: 0;
+    margin-top: 1em;
+    font-size: rem(18px);
+    font-weight: 100;
+    text-align: center;
+    color: #fff;
+}
+
+.project-content-navigation a {
+    font-weight: normal;
+}
+
+.project-stats {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.stat-label {
+    position: relative;
+    font-size: 0.8125rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    &:after {
+        content: ": ";
+    }
+}
+
+.copyright {
+    background-color: rgba(0, 0, 0, 0.1);
+    p {
+        font-size: 14px;
+    }
+}
+
+.left,
+.right {
+    float: left;
+    box-sizing: border-box;
+    width: 50%;
+    padding: 80px 40px 40px;
+}
+.left *,
+.right * {
+    opacity: 0;
+    -webkit-transition-duration: 300ms;
+       -moz-transition-duration: 300ms;
+         -o-transition-duration: 300ms;
+            transition-duration: 300ms;
+    -webkit-transition-property: opacity;
+       -moz-transition-property: opacity;
+         -o-transition-property: opacity;
+            transition-property: opacity;
+}
+.is-loaded .left *,
+.is-loaded .right * {
+    opacity: 1;
+}
+.right {
+    color: #fff;
+    background-color: #1a1a1a;
+}
+#fonts {
+    position: fixed;
+    top: 40px;
+    left: 40px;
+    opacity: 0;
+    -webkit-transition-duration: 300ms;
+       -moz-transition-duration: 300ms;
+         -o-transition-duration: 300ms;
+            transition-duration: 300ms;
+    -webkit-transition-property: opacity;
+       -moz-transition-property: opacity;
+         -o-transition-property: opacity;
+            transition-property: opacity;
+}
+.is-loaded #fonts {
+    opacity: 1;
+}
+*:focus {
+    outline: none;
+}
+.italic {
+    font-style: italic;
+}
+.light {
+    font-weight: 300;
+}
+.bold {
+    font-weight: bold;
+}

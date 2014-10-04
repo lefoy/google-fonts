@@ -1,23 +1,65 @@
 module.exports = function(grunt) {
 
-    // load grunt config
+    var pkg = grunt.file.readJSON('package.json'),
+        currentVersion = pkg.version;
+
+    // Project configuration.
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
-        compass: {
-            dest: {
-                options: {
-                    sassDir: 'assets/sass',
-                    cssDir: 'assets/css',
-                    environment: 'production'
-                }
+        pkg: pkg,
+
+        bump: {
+            options: {
+                files: ['package.json'],
+                updateConfigs: ['pkg'],
+                commit: true,
+                commitMessage: 'Release v%VERSION%',
+                commitFiles: ['package.json'],
+                createTag: true,
+                tagName: 'v%VERSION%',
+                tagMessage: 'Version %VERSION%',
+                push: true,
+                pushTo: 'origin',
+                gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d',
+                globalReplace: false
+            }
+        },
+
+        exec: {
+            build: {
+                cmd: 'jekyll build --safe'
             },
+            serve: {
+                cmd: 'jekyll serve --safe'
+            }
+        },
+
+        concurrent: {
+            jekyll: {
+                tasks: ['exec:serve', 'watch'],
+                options: {
+                    logConcurrentOutput: true
+                }
+            }
+        },
+
+        watch: {
+            jekyll: {
+                files: [
+                    '*.{html, md, yml, js}',
+                    '_includes/**/*.{html, md, yml, js, scss}',
+                    '_layouts/**/*.{html, md, yml, js, scss}',
+                    '_posts/**/*.{html, md, yml, js, scss}',
+                    '_scss/**/*.{html, md, yml, js, scss}'
+                ],
+                tasks: ['exec:build']
+            }
         }
     });
 
-    // load npm tasks
-    grunt.loadNpmTasks('grunt-contrib-compass');
+    // Load all npm tasks at once
+    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-    // define grunt tasks
-    grunt.registerTask('default', ['compass']);
+    // Tasks
+    grunt.registerTask('default', ['concurrent:jekyll']);
 
 };
