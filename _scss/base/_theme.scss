@@ -39,11 +39,10 @@
 }
 
 .project-header {
-    background: -webkit-linear-gradient(90deg, #ff512f 10%, #f09819 90%);
-    background:    -moz-linear-gradient(90deg, #ff512f 10%, #f09819 90%);
-    background:     -ms-linear-gradient(90deg, #ff512f 10%, #f09819 90%);
-    background:      -o-linear-gradient(90deg, #ff512f 10%, #f09819 90%);
-    background:         linear-gradient(90deg, #ff512f 10%, #f09819 90%);
+    background-image: url(http://lefoy.net/google-fonts/public/img/background.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
 }
 
 .project-buttons {
