@@ -5,7 +5,6 @@ var layout = (function(window, document, $) {
     var init = function() {
 
             stickOnScroll();
-            navigation();
 
         },
 
@@ -17,20 +16,6 @@ var layout = (function(window, document, $) {
                     topOffset: 10
                 });
             }, 100);
-
-        },
-
-        navigation = function() {
-
-            var $el,
-                element;
-            $('.project-content-left').append('<nav class="project-content-navigation"><ol></ol></nav>');
-            $('.project-content-right').find('h1, h2, h3').each(function(index, el) {
-                $el = $(el);
-                $el.attr('id', $el.text().replace(' ', '-').toLowerCase());
-                element = '<li><a href="#' + $el.attr('id') + '">' + $el.text() + '</a></li>';
-                $('.project-content-left').find('.project-content-navigation ol').append(element);
-            });
 
         };
 
