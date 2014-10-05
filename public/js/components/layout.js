@@ -11,7 +11,7 @@ var layout = (function(window, document, $) {
         stickOnScroll = function() {
 
             window.setTimeout(function() {
-                var ele = $('#fonts');
+                var ele = $('.project-content-left');
                 ele.css('height', ele.outerHeight()).stickOnScroll({
                     topOffset: 10
                 });
