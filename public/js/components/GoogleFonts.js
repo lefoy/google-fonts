@@ -33,7 +33,9 @@ window.googlefonts = window.googlefonts || {};
 
             dropdown.find('option').eq(fontIndex).attr('selected', 'selected');
 
-            _updateFont();
+            if (hash !== '') {
+                _updateFont();
+            }
 
         }
 
